@@ -1,5 +1,4 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using OrakYazilimLib.DbGeneric;
 using OrakYazilimLib.Util;
 using OrakYazilimLib.Util.core;

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Web;
 using System.Web.Script.Serialization;
-using OrakYazilimLib.DataContainer;
 using Newtonsoft.Json;
+using OrakYazilimLib.DataContainer;
+//using Newtonsoft.Json;
 
 namespace OrakYazilimLib.UtilWeb
 {
