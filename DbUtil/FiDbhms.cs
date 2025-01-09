@@ -21,7 +21,7 @@ namespace OrakYazilimLib.DbUtil
 
 		public int errorRetValue = -1;
 
-		public IFiDbConnFactory fiDbConnFactory{ get; set; }
+		public IFiDbConnFactory iFiDbConnFactory{ get; set; }
 
 		public FiDbhms()
 		{
