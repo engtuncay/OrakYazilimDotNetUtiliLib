@@ -17,7 +17,7 @@ namespace OrakYazilimLib.AdoNetHelper
 
         public int CreateTableWithRefresh(String csConfigKey, Type typeTable)
         {
-            return CreateTableWithCsAndRefresh(FiAppConfig.GetConnectionString(csConfigKey), typeTable);
+            return CreateTableWithCsAndRefresh(FiAppConfig.getConnectionString(csConfigKey), typeTable);
         }
     }
 }

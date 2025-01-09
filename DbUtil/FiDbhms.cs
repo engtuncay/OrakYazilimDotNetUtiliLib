@@ -11,6 +11,9 @@ using OrakYazilimLib.Util.core;
 
 namespace OrakYazilimLib.DbUtil
 {
+	/**
+	 * FiDbHelper-M
+	 */
 	public class FiDbhms
 	{
 		public string connString { get; set; }
@@ -18,7 +21,7 @@ namespace OrakYazilimLib.DbUtil
 
 		public int errorRetValue = -1;
 
-
+		public IFiDbConnFactory fiDbConnFactory{ get; set; }
 
 		public FiDbhms()
 		{
@@ -32,8 +35,7 @@ namespace OrakYazilimLib.DbUtil
 
 		public static FiDbhms FactoryWitProfile(string configKey)
 		{
-			//if()
-			return new FiDbhms(FiAppConfig.GetConnectionString(configKey));
+			return new FiDbhms(FiAppConfig.getConnectionString(configKey));
 		}
 
 		//public static FiDbhms Factory(FiConnConfig configKey)
