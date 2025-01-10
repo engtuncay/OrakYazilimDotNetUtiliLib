@@ -53,8 +53,6 @@ namespace OrakYazilimLib.DbUtil
 			return new FiDbhms(connString);
 		}
 
-
-
 		public Fdr<int> SqlExecuteNonQuery(string sql, List<FiSqlParameter> sqlParamList)
 		{
 			return SqlExecuteNonQuery(sql, FiSqlParameter.convertSqlParameter(sqlParamList).ToArray());

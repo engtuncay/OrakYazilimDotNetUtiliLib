@@ -16,7 +16,8 @@ namespace OrakYazilimLib.Util.core
         public FiKeybean(IDictionary<string, object> dictionary) : base(dictionary)
         {
         }
-        public void AddByFiCol(FiCol ficol, object objValue)
+        
+        public void addByFiCol(FiCol ficol, object objValue)
         {
             Add(ficol.txFieldName,objValue);
         }
