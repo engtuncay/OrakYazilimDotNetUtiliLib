@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace OrakYazilimLib.Util
 {
-    public class FiString
+
+	/**
+	 * FiStr
+	 */
+	public class FiString
     {
         public static void check()
         {

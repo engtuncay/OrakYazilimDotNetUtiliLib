@@ -9,11 +9,11 @@ namespace OrakYazilimLib.Util.core
 {
     public class FiCollection
     {
+        
         public static List<T> BuildList<T>(params T[] items)
         {
             return new List<T>(items);
         }
-
 
         public static bool isFull<T>(T[] prms)
         {
