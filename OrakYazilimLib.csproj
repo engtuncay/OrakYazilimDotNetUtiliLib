@@ -140,6 +140,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilThirdParty\ShortGuid.cs" />
     <Compile Include="UtilThirdParty\TextHelper.cs" />
+    <Compile Include="Util\Collection\ListFkb.cs" />
     <Compile Include="Util\core\FiBoolean.cs" />
     <Compile Include="Util\core\FiCalender.cs" />
     <Compile Include="Util\config\FiAppConfig.cs" />
@@ -184,9 +185,6 @@
     <PackageReference Include="ZstdSharp.Port">
       <Version>0.8.1</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Util\collection\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

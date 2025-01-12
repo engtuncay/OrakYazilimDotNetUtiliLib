@@ -9,8 +9,8 @@ namespace OrakYazilimLib.Util.core
     public class FiMeta
     {
         /**
- * TxCode (TxKodu)
- */
+         * TxCode (TxKodu)
+        */
         public string txKey { get; set; }
 
         public string txValue { get; set; }
@@ -29,7 +29,7 @@ namespace OrakYazilimLib.Util.core
 
         public string txType { get; set; }
 
-        public FiMeta() { }
+        public FiMeta() {}
 
         public FiMeta(string txKey)
         {

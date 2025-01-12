@@ -9,7 +9,7 @@ namespace OrakYazilimLib.Util.core
             Console.WriteLine(message);
         }
 
-        public FiLog getInstance()
+        public FiLog GetInstance()
         {
             return new FiLog();
         }
