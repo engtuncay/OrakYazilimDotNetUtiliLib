@@ -23,7 +23,7 @@ namespace OrakYazilimLib.Util.core
         public void AddByFiCol(FiCol ficol, object objValue)
         {
             GetSetFiColInit().Add(ficol);
-            Add(ficol.txFieldName,objValue);
+            Add(ficol.ofcTxFieldName,objValue);
         }
 
         public HashSet<FiCol> GetSetFiColInit()

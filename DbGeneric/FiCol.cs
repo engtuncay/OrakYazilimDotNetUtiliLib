@@ -5,8 +5,8 @@ namespace OrakYazilimLib.DbGeneric
 
     public class FiCol
     {
-        public string txFieldName { get; set; }
-        public string txHeaderName { get; set; }
+        public string ofcTxFieldName { get; set; }
+        public string ofcTxHeader { get; set; }
 
         /**
          * Alanın varsayılan veri türü
@@ -16,18 +16,18 @@ namespace OrakYazilimLib.DbGeneric
 
         public FiCol(string fieldName)
         {
-            this.txFieldName = fieldName;
+            this.ofcTxFieldName = fieldName;
         }
 
-        public FiCol(string txFieldName,string txHeaderName)
+        public FiCol(string ofcTxFieldName,string ofcTxHeader)
         {
-            this.txFieldName = txFieldName;
-            this.txHeaderName = txHeaderName;
+            this.ofcTxFieldName = ofcTxFieldName;
+            this.ofcTxHeader = ofcTxHeader;
         }
 
         public string getFieldName()
         {
-            return this.txFieldName;
+            return this.ofcTxFieldName;
         }
 
         public FiCol()
@@ -36,8 +36,8 @@ namespace OrakYazilimLib.DbGeneric
 
         public override string ToString()
         {
-            if(this.txFieldName == null) { return ""; }
-            return this.txFieldName;
+            if(this.ofcTxFieldName == null) { return ""; }
+            return this.ofcTxFieldName;
         }
     }
 
