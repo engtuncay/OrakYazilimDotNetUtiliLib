@@ -25,7 +25,7 @@ namespace OrakYazilimLib.DbGeneric
             this.ofcTxHeader = ofcTxHeader;
         }
 
-        public string getFieldName()
+        public string GetFieldName()
         {
             return this.ofcTxFieldName;
         }
