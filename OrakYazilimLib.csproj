@@ -112,7 +112,7 @@
     <Compile Include="DbUtil\IFiDbConnFactory.cs" />
     <Compile Include="DbUtil\FiDbConnFactoryByConf.cs" />
     <Compile Include="DbUtil\FiMetaEntity.cs" />
-    <Compile Include="DbUtil\FiQueryGenMs.cs" />
+    <Compile Include="DbUtil\FiQugen.cs" />
     <Compile Include="DbUtil\FiQueryTools.cs" />
     <Compile Include="DbUtil\Fsf.cs" />
     <Compile Include="DbGeneric\FiSqlParameter.cs" />
@@ -128,7 +128,7 @@
     <Compile Include="DbUtil\FiListFiSqlParam.cs" />
     <Compile Include="DbUtil\FiListSqlParam.cs" />
     <Compile Include="DemoEntity\DemoMusteri.cs" />
-    <Compile Include="DbUtil\FiDataTableEntensions.cs" />
+    <Compile Include="DbUtil\FiDataTable.cs" />
     <Compile Include="DbUtil\FiMySql.cs" />
     <Compile Include="DbUtil\FiMySqlQuery.cs" />
     <Compile Include="DbUtil\FiQuery.cs" />

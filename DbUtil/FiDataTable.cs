@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace OrakYazilimLib.DbUtil
 {
-    public static class FiDataTableEntensions
+    public static class FiDataTable
     {
         public static IList<T> ToList<T>(this DataTable table) where T : new()
         {

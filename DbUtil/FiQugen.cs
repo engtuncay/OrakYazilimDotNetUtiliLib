@@ -9,8 +9,9 @@ namespace OrakYazilimLib.DbUtil
     /// <summary>
     /// FiQuery Generator - Sorgu oluşturma yardımcı metodlar
     /// </summary>
-    public class FiQueryGenMs
+    public class FiQugen
     {
+        
     }
 
 
