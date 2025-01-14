@@ -112,7 +112,7 @@
     <Compile Include="DbUtil\IFiDbConnFactory.cs" />
     <Compile Include="DbUtil\FiDbConnFactoryByConf.cs" />
     <Compile Include="DbUtil\FiMetaEntity.cs" />
-    <Compile Include="DbUtil\FiQugen.cs" />
+    <Compile Include="DbUtil\FicQugen.cs" />
     <Compile Include="DbUtil\FiQueryTools.cs" />
     <Compile Include="DbUtil\Fsf.cs" />
     <Compile Include="DbGeneric\FiSqlParameter.cs" />
@@ -157,7 +157,7 @@
     <Compile Include="Util\core\FiRegExp.cs" />
     <Compile Include="Util\core\FiSql.cs" />
     <Compile Include="Util\core\FiType.cs" />
-    <Compile Include="Util\core\ObservableProperties.cs" />
+    <Compile Include="Util\core\ObservableProps.cs" />
     <Compile Include="Util\helper\Fistf.cs" />
     <Compile Include="Util\web\FiJson.cs" />
     <Compile Include="Util\core\FiCollection.cs" />

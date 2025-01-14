@@ -13,7 +13,7 @@ namespace OrakYazilimLib.Util.core
     /// this is the opposite to the MSDN, stating, you should have a specific class, that is observable and should hold all required properties to be reflected by the WPF-XAML-UI.
     /// </summary>
     /// <see cref="http://stackoverflow.com/a/43835207/1644202"/>
-    public static class ObservableProperties
+    public static class ObservableProps
     {
         /// <summary>
         /// a single observable type

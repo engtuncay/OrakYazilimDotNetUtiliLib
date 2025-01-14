@@ -37,8 +37,7 @@ namespace OrakYazilimLib.DbGeneric
 
         public override string ToString()
         {
-            if (this.ofcTxFieldName == null) { return ""; }
-            return this.ofcTxFieldName;
+            return this.ofcTxFieldName ?? "";
         }
         
         public FiCol BuiColType(FiColType fiColType)
