@@ -7,10 +7,11 @@ namespace OrakYazilimLib.DbGeneric
     {
         public string ofcTxFieldName { get; set; }
         public string ofcTxHeader { get; set; }
+        public FiColType ofcFiColType { get; set; }
 
         /**
          * Alanın varsayılan veri türü
-         * 
+         *
          */
         public FiColType fiColType { get; set; }
 
@@ -19,7 +20,7 @@ namespace OrakYazilimLib.DbGeneric
             this.ofcTxFieldName = fieldName;
         }
 
-        public FiCol(string ofcTxFieldName,string ofcTxHeader)
+        public FiCol(string ofcTxFieldName, string ofcTxHeader)
         {
             this.ofcTxFieldName = ofcTxFieldName;
             this.ofcTxHeader = ofcTxHeader;
@@ -36,8 +37,14 @@ namespace OrakYazilimLib.DbGeneric
 
         public override string ToString()
         {
-            if(this.ofcTxFieldName == null) { return ""; }
+            if (this.ofcTxFieldName == null) { return ""; }
             return this.ofcTxFieldName;
+        }
+        
+        public FiCol BuiColType(FiColType fiColType)
+        {
+            this.fiColType = fiColType;
+            return this;
         }
     }
 
