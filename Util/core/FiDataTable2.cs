@@ -4,7 +4,7 @@ using System.Data;
 
 namespace OrakYazilimLib.Util.core
 {
-	public class FiDataTable
+	public class FiDataTable2
 	{
 		public static List<string> convertListString(DataTable dataTable, string txFieldName)
 		{
