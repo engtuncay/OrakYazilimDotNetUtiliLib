@@ -1,4 +1,5 @@
-﻿using OrakYazilimLib.AdoNetHelper;
+﻿using OrakYazilimLib.DataContainer;
+using OrakYazilimLib.Util.core;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,19 +9,19 @@ namespace OrakYazilimLib.AdoNetHelper
 {
 	public class FiMssql
 	{
-		public string ConnString { get; private set; }
-		public SqlConnection Conn { get; private set; }
+		public string connString { get; private set; }
+		public SqlConnection conn { get; private set; }
+
 		/// <summary>
 		/// Comm : Command
 		/// </summary>
-		public SqlCommand Comm { get; private set; }
+		public SqlCommand comm { get; private set; }
 
-
-		public FiMssql(string _connString)
+		public FiMssql(string connString)
 		{
-			ConnString = _connString;
-			Conn = new SqlConnection(ConnString);
-			Comm = Conn.CreateCommand();
+			this.connString = connString;
+			conn = new SqlConnection(connString);
+			comm = conn.CreateCommand();
 		}
 
 
@@ -35,24 +36,35 @@ namespace OrakYazilimLib.AdoNetHelper
 			return pars;
 		}
 
+		private SqlParameter[] ProcessParameters(FiKeybean fkbParams)
+		{
+			SqlParameter[] pars = fkbParams.Select(pair => new SqlParameter()
+			{
+				ParameterName = pair.Key,
+				Value = pair.Value
+			}).ToArray();
+
+			return pars;
+		}
+
 
 		public virtual int RunQuery(string query, params ParamItem[] parameters)
 		{
-			Comm.Parameters.Clear();
-			Comm.CommandText = query;
-			Comm.CommandType = CommandType.Text;
+			comm.Parameters.Clear();
+			comm.CommandText = query;
+			comm.CommandType = CommandType.Text;
 
 			if (parameters != null && parameters.Length > 0)
 			{
-				Comm.Parameters.AddRange(ProcessParameters(parameters));
+				comm.Parameters.AddRange(ProcessParameters(parameters));
 			}
 
 			int result = 0;
 
-			Conn.Open();
+			conn.Open();
 			try
 			{
-				result = Comm.ExecuteNonQuery();
+				result = comm.ExecuteNonQuery();
 				if (result == -1) result = 1;
 			}
 			catch (Exception e)
@@ -62,25 +74,59 @@ namespace OrakYazilimLib.AdoNetHelper
 				//throw;
 			}
 
-			Conn.Close();
+			conn.Close();
 
 			return result;
 		}
 
+		public virtual Fdr RunQuery(string query, FiKeybean parameters)
+		{
+			comm.Parameters.Clear();
+			comm.CommandText = query;
+			comm.CommandType = CommandType.Text;
+
+			Fdr fdrMain = new Fdr();
+
+			if (parameters != null && parameters.Count > 0)
+			{
+				comm.Parameters.AddRange(ProcessParameters(parameters));
+			}
+
+			int result = 0;
+
+			conn.Open();
+			try
+			{
+				fdrMain.lnRowsAffected = comm.ExecuteNonQuery();
+				fdrMain.boResult = true;
+			}
+			catch (Exception e)
+			{
+				//Console.WriteLine(e);
+				fdrMain.refException = e;
+				fdrMain.boResult = false;
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			return fdrMain;
+		}
 
 		public virtual DataTable RunProc(string procName, params ParamItem[] parameters)
 		{
-			Comm.Parameters.Clear();
-			Comm.CommandText = procName;
-			Comm.CommandType = CommandType.StoredProcedure;
+			comm.Parameters.Clear();
+			comm.CommandText = procName;
+			comm.CommandType = CommandType.StoredProcedure;
 
 			if (parameters != null && parameters.Length > 0)
 			{
-				Comm.Parameters.AddRange(ProcessParameters(parameters));
+				comm.Parameters.AddRange(ProcessParameters(parameters));
 			}
 
 			DataTable dt = new DataTable();
-			SqlDataAdapter adapter = new SqlDataAdapter(Comm);
+			SqlDataAdapter adapter = new SqlDataAdapter(comm);
 			adapter.Fill(dt);
 
 			return dt;
@@ -89,16 +135,16 @@ namespace OrakYazilimLib.AdoNetHelper
 
 		public virtual DataTable GetTable(string query, params ParamItem[] parameters)
 		{
-			Comm.Parameters.Clear();
-			Comm.CommandText = query;
-			Comm.CommandType = CommandType.Text;
+			comm.Parameters.Clear();
+			comm.CommandText = query;
+			comm.CommandType = CommandType.Text;
 
 			if (parameters != null && parameters.Length > 0)
 			{
-				Comm.Parameters.AddRange(ProcessParameters(parameters));
+				comm.Parameters.AddRange(ProcessParameters(parameters));
 			}
 
-			SqlDataAdapter da = new SqlDataAdapter(Comm);
+			SqlDataAdapter da = new SqlDataAdapter(comm);
 
 			// Adaptor : otomatik bağlantı açar. Verileri çeker(sorguyu çalıştırır) ve bir datatable 'a doldurur ve bağlantıyı otomatik kapatır.
 

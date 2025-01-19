@@ -25,6 +25,8 @@ namespace OrakYazilimLib.DataContainer
 
         public string txMessage {get;set;}
 
+        public Exception refException {get;set;}
+
         /**
          * External Object
          */
@@ -101,6 +103,20 @@ namespace OrakYazilimLib.DataContainer
         {
             if (this.blResult == null) return false;
             return blResult.Value;
+        }
+    }
+
+    public class Fdr : Fdr<object>
+    {
+        public Fdr()
+        {
+
+        }
+
+        public Fdr(bool v)
+        {
+            base.blResult = v;
+            base.boResult = v;
         }
     }
 }

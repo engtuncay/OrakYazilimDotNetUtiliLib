@@ -99,7 +99,6 @@
     <Compile Include="CouchDb\Credentials.cs" />
     <Compile Include="DataContainer\Torg.cs" />
     <Compile Include="DataContainer\Tor.cs" />
-    <Compile Include="DataContainer\FiResponseNonGen.cs" />
     <Compile Include="DataContainer\FiReturn2.cs" />
     <Compile Include="DataContainer\Fdr.cs" />
     <Compile Include="DbAttribute\IsPK.cs" />
