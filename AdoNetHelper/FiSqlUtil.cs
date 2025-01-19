@@ -6,37 +6,32 @@ using System.Threading.Tasks;
 
 namespace OrakYazilimLib.AdoNetHelper
 {
-    public class FiSqlUtil
+    public static class FiSqlUtil
     {
-        public static Boolean checkForSQLInjection(string userInput) {
+        public static Boolean CheckForSQLInjection(string userInput) {
 
-            bool isSQLInjection = false;
+            bool isSqlInjection = false;
 
             string[] sqlCheckList = { "--",";--",";","/*","*/","@@","@","char","nchar","varchar","nvarchar","alter","begin",
 "cast","create","cursor","declare","delete","drop","end","exec","execute","fetch","insert","kill","select","sys","sysobjects",
 "syscolumns","table","update" };
 
-            string CheckString = userInput.Replace("'", "''");
+            string checkString = userInput.Replace("'", "''");
 
             for (int i = 0; i <= sqlCheckList.Length - 1; i++)
             {
 
-                if ((CheckString.IndexOf(sqlCheckList[i],StringComparison.OrdinalIgnoreCase) >= 0)) { 
-                    isSQLInjection = true; 
+                if ((checkString.IndexOf(sqlCheckList[i],StringComparison.OrdinalIgnoreCase) >= 0)) {
+                    isSqlInjection = true;
                 }
             }
 
-            return isSQLInjection;
+            return isSqlInjection;
         }
 
-        public static string manipulateSqlInjection(string userInput)
+        public static string ManipulateSqlInjection(string userInput)
         {
-            if(checkForSQLInjection(userInput))
-            {
-                return "-9999999";
-            }
-
-            return userInput;
+            return CheckForSQLInjection(userInput) ? "-9999999" : userInput;
         }
     }
 
