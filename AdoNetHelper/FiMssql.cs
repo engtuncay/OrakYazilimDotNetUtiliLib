@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace OrakYazilimLib.AdoNetHelper
 {
-	public partial class FiMssql
+	public class FiMssql
 	{
 		public string ConnString { get; private set; }
 		public SqlConnection Conn { get; private set; }
