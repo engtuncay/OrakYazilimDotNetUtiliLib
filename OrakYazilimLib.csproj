@@ -133,7 +133,7 @@
     <Compile Include="DbUtil\FiQuery.cs" />
     <Compile Include="DbUtil\FiLINQtoDataTable.cs" />
     <Compile Include="DbUtil\FiListExtensions.cs" />
-    <Compile Include="DbUtil\FiSqlServerQuery.cs" />
+    <Compile Include="DbUtil\FiMssqlQuery.cs" />
     <Compile Include="DemoEntity\DemoMkfields.cs" />
     <Compile Include="DemoEntity\MysqlQueryDemo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,6 +142,7 @@
     <Compile Include="Util\Collection\ListFkb.cs" />
     <Compile Include="Util\ColStruct\FiColList.cs" />
     <Compile Include="Util\ColStruct\IFiTableMeta.cs" />
+    <Compile Include="Util\config\IConfigManager.cs" />
     <Compile Include="Util\core\FiBoolean.cs" />
     <Compile Include="Util\core\FiCalender.cs" />
     <Compile Include="Util\config\FiAppConfig.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Util\core\FiDataTable2.cs" />
     <Compile Include="Util\core\FiDate.cs" />
     <Compile Include="Util\core\FiKeybean.cs" />
+    <Compile Include="Util\core\FiKeyString.cs" />
     <Compile Include="Util\core\FiLog.cs" />
     <Compile Include="Util\core\FiMeta.cs" />
     <Compile Include="Util\core\FiNumber.cs" />

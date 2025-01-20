@@ -12,7 +12,7 @@ using OrakYazilimLib.Util.core;
 namespace OrakYazilimLib.DbUtil
 {
 	/**
-	 * FiDbHelper-M
+	 * FiDbHelper-Mssql
 	 */
 	public class FiDbhms
 	{
@@ -33,9 +33,9 @@ namespace OrakYazilimLib.DbUtil
 			connString = connStr;
 		}
 
-		public static FiDbhms FactoryWitProfile(string configKey)
+		public static FiDbhms FactoryWitProfile(string connProfile)
 		{
-			return new FiDbhms(FiAppConfig.getConnectionString(configKey));
+			return new FiDbhms(FiAppConfig.GetConnectionString(connProfile));
 		}
 
 		//public static FiDbhms Factory(FiConnConfig configKey)
@@ -72,7 +72,7 @@ namespace OrakYazilimLib.DbUtil
 					connection.Open();
 					if (prms != null && prms.Length > 0)
 					{
-						attachParameters(command, prms);
+						AttachParameters(command, prms);
 					}
 
 					int totalRowsAffected = command.ExecuteNonQuery();
@@ -101,7 +101,7 @@ namespace OrakYazilimLib.DbUtil
 		{
 
 			SqlConnection connection = new SqlConnection(connString);
-			Fdr fiResponse = new Fdr();
+			Fdr fdr = new Fdr();
 			SqlParameter[] prms = FiSqlParameter.convertSqlParameter(sqlParamList).ToArray();
 
 			using (connection)
@@ -112,23 +112,23 @@ namespace OrakYazilimLib.DbUtil
 					connection.Open();
 					if (prms != null && prms.Length > 0)
 					{
-						attachParameters(command, prms);
+						AttachParameters(command, prms);
 					}
 
 					int totalRowsAffected = command.ExecuteNonQuery();
-					fiResponse.obReturn = totalRowsAffected;
-					fiResponse.lnRowsAffected = totalRowsAffected;
-					fiResponse.blResult = true;
+					fdr.obReturn = totalRowsAffected;
+					fdr.lnRowsAffected = totalRowsAffected;
+					fdr.blResult = true;
 				}
 				catch (Exception e)
 				{
 					FiLogWeb.logException(e);
-					fiResponse.ExceptionQueryErrorLog(e);
+					fdr.ExceptionQueryErrorLog(e);
 				}
 
 			}
 
-			return fiResponse;
+			return fdr;
 
 			//            command = new SqlCommand(sql, connection) { CommandType = CommandType.Text, CommandTimeout = connection.ConnectionTimeout };
 			//            command.Parameters.AddRange(prms);
@@ -154,7 +154,7 @@ namespace OrakYazilimLib.DbUtil
 
 					if (prms != null && prms.Length > 0)
 					{
-						attachParameters(command, prms);
+						AttachParameters(command, prms);
 					}
 
 					result = command.ExecuteScalar();
@@ -208,11 +208,11 @@ namespace OrakYazilimLib.DbUtil
 			return fiResponse;
 		}
 
-		public Fdr<T> SqlExecuteScalar<T>(FiSqlServerQuery fiSqlServerQuery)
+		public Fdr<T> SqlExecuteScalar<T>(FiMssqlQuery fiMssqlQuery)
 		{
 
 			SqlConnection connection = new SqlConnection(connString);
-			var prms = FiSqlParameter.convertSqlParameter(fiSqlServerQuery.listParams).ToArray();
+			var prms = FiSqlParameter.convertSqlParameter(fiMssqlQuery.listParams).ToArray();
 
 			object result = null;
 			var fiResponse = new Fdr<T>();
@@ -221,12 +221,12 @@ namespace OrakYazilimLib.DbUtil
 			{
 				try
 				{
-					SqlCommand command = new SqlCommand(fiSqlServerQuery.sql, connection);
+					SqlCommand command = new SqlCommand(fiMssqlQuery.sql, connection);
 					connection.Open();
 
 					if (prms != null && prms.Length > 0)
 					{
-						attachParameters(command, prms);
+						AttachParameters(command, prms);
 					}
 
 					result = command.ExecuteScalar();
@@ -285,22 +285,22 @@ namespace OrakYazilimLib.DbUtil
 		//    return SqlExecuteDataTable(fiSqlQuery.sql, fiSqlQuery.GetListParams());
 		//}
 
-		public Fdr<DataTable> SqlExecuteDataTable(FiSqlServerQuery fiSqlServerQuery)
+		public Fdr<DataTable> SqlExecuteDataTable(FiMssqlQuery fiMssqlQuery)
 		{
 
 			DataSet ds = new DataSet();
 			SqlConnection connection = new SqlConnection(connString);
-			var prms = FiSqlParameter.convertSqlParameter(fiSqlServerQuery.getListParams()).ToArray();
+			var prms = FiSqlParameter.convertSqlParameter(fiMssqlQuery.getListParams()).ToArray();
 
 			var fiReturn = new Fdr<DataTable>();
 
 			using (connection)
 			{
-				SqlCommand command = new SqlCommand(fiSqlServerQuery.sql, connection);
+				SqlCommand command = new SqlCommand(fiMssqlQuery.sql, connection);
 
 				if (FiCollection.isFull(prms))
 				{
-					attachParameters(command, prms);
+					AttachParameters(command, prms);
 				}
 
 				using (SqlDataAdapter da = new SqlDataAdapter(command))
@@ -320,7 +320,7 @@ namespace OrakYazilimLib.DbUtil
 						fiReturn.blResult = false;
 						fiReturn.txErrorMsgShort = FiLogWeb.GetMessage(ex);
 						fiReturn.obReturn = new DataTable();
-						fiReturn.txErrorMsgDetail = FiLogWeb.GetDetailSqlLog(fiSqlServerQuery);
+						fiReturn.txErrorMsgDetail = FiLogWeb.GetDetailSqlLog(fiMssqlQuery);
 					}
 				}
 
@@ -340,9 +340,8 @@ namespace OrakYazilimLib.DbUtil
 			return fiReturn;
 		}
 
-		public Fdr<DataTable> sqlExecuteDataTable(string sql, List<FiSqlParameter> listParam)
+		public Fdr<DataTable> SqlExecuteDataTable(string sql, List<FiSqlParameter> listParam)
 		{
-
 			DataSet ds = new DataSet();
 			SqlConnection connection = new SqlConnection(connString);
 			var prms = FiSqlParameter.convertSqlParameter(listParam).ToArray();
@@ -355,7 +354,7 @@ namespace OrakYazilimLib.DbUtil
 
 				if (FiCollection.isFull(prms))
 				{
-					attachParameters(command, prms);
+					AttachParameters(command, prms);
 				}
 
 				using (SqlDataAdapter da = new SqlDataAdapter(command))
@@ -395,7 +394,7 @@ namespace OrakYazilimLib.DbUtil
 			return fdr;
 		}
 
-		public Fdr<DataTable> sqlExecute(FiQuery fiQuery)
+		public Fdr<DataTable> SqlExecute(FiQuery fiQuery)
 		{
 
 			DataSet ds = new DataSet();
@@ -411,7 +410,7 @@ namespace OrakYazilimLib.DbUtil
 
 				if (FiCollection.isFull(queryParams))
 				{
-					attachParameters(command, queryParams);
+					AttachParameters(command, queryParams);
 				}
 
 				using (SqlDataAdapter da = new SqlDataAdapter(command))
@@ -466,7 +465,7 @@ namespace OrakYazilimLib.DbUtil
 
 				if (FiCollection.isFull(prms))
 				{
-					attachParameters(command, prms);
+					AttachParameters(command, prms);
 				}
 
 				using (SqlDataAdapter da = new SqlDataAdapter(command))
@@ -540,7 +539,7 @@ namespace OrakYazilimLib.DbUtil
 		}
 
 
-		private static void attachParameters(SqlCommand command, SqlParameter[] commandParameters)
+		private static void AttachParameters(SqlCommand command, SqlParameter[] commandParameters)
 		{
 			// TODO throw düzeltilmeli
 			if (command == null) throw new ArgumentNullException("parametre eklenecek command objesi yok");

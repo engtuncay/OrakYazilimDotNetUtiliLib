@@ -10,14 +10,14 @@ namespace OrakYazilimLib.AdoNetHelper
         {
             var database = new FiMssql(connStr);
 
-            int rowsaffected = database.RunQuery(new FiSqlServerQuery().createQuery(typeTable, (int)EmTblCreateTypes.Refresh));
+            int rowsaffected = database.RunQuery(new FiMssqlQuery().createQuery(typeTable, (int)EmTblCreateTypes.Refresh));
 
             return rowsaffected;
         }
 
         public int CreateTableWithRefresh(String csConfigKey, Type typeTable)
         {
-            return CreateTableWithCsAndRefresh(FiAppConfig.getConnectionString(csConfigKey), typeTable);
+            return CreateTableWithCsAndRefresh(FiAppConfig.GetConnectionString(csConfigKey), typeTable);
         }
     }
 }

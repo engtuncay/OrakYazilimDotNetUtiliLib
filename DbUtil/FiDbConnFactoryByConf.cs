@@ -7,7 +7,7 @@ namespace OrakYazilimLib.DbUtil
 
         public string getConnString(string connProfile)
         {
-            return FiAppConfig.getConnectionString(connProfile);
+            return FiAppConfig.GetConnectionString(connProfile);
         }
     }
 }

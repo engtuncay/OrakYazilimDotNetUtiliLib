@@ -13,7 +13,7 @@ using OrakYazilimLib.Util.core;
 namespace OrakYazilimLib.DbUtil
 {
 
-    public class FiSqlServerQuery
+    public class FiMssqlQuery
     {
         public string sql { get; set; }
 
