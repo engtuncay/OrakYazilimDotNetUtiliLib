@@ -7,23 +7,23 @@ namespace OrakYazilimLib.Util.config
 {
     public static class FiAppConfig
     {
-        public static bool BoTestMode = false;
-        public static bool BoUseConfigManager = false; // { get; set; }  //= false;
-        public static IConfigManager ConfigManager;
+        public static bool boTestMode = false;
+        public static bool boUseConfigManager = false; // { get; set; }  //= false;
+        public static IConfigManager configManager;
 
         public static void ConvertTestModeTrue()
         {
-            BoTestMode = true;
+            boTestMode = true;
         }
 
         public static string GetConnectionString(string key)
         {
             // config dosyasından key'den sonra test ile geleni alması için.
-            if (BoTestMode == true) key = key + "Test";
+            if (boTestMode == true) key = key + "Test";
 
-            if (BoUseConfigManager)
+            if (boUseConfigManager)
             {
-                return ConfigManager.GetConnString(key); // GetFksConfigsInit()[key];
+                return configManager.GetConnString(key); // GetFksConfigsInit()[key];
             }
 
             string connString = ConfigurationManager.ConnectionStrings[key].ConnectionString;
