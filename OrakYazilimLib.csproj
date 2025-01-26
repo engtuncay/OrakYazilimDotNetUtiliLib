@@ -154,6 +154,7 @@
     <Compile Include="Util\core\FiKeyString.cs" />
     <Compile Include="Util\core\FiLog.cs" />
     <Compile Include="Util\core\FiMeta.cs" />
+    <Compile Include="Util\core\FiMetval.cs" />
     <Compile Include="Util\core\FiNumber.cs" />
     <Compile Include="Util\core\FiReflection.cs" />
     <Compile Include="Util\core\FiRegExp.cs" />
