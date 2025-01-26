@@ -147,6 +147,7 @@
     <Compile Include="Util\core\FiBoolean.cs" />
     <Compile Include="Util\core\FiCalender.cs" />
     <Compile Include="Util\config\FiAppConfig.cs" />
+    <Compile Include="Util\core\FiConsole.cs" />
     <Compile Include="Util\core\FiConsoleWeb.cs" />
     <Compile Include="Util\core\FiDataTable2.cs" />
     <Compile Include="Util\core\FiDate.cs" />
