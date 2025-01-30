@@ -109,7 +109,6 @@
     <Compile Include="DbGeneric\RepoGeneric2.cs" />
     <Compile Include="DbUtil\FiConnConfig.cs" />
     <Compile Include="DbUtil\IFiDbConnFactory.cs" />
-    <Compile Include="DbUtil\FiDbConnFactoryByConf.cs" />
     <Compile Include="DbUtil\FiMetaEntity.cs" />
     <Compile Include="DbUtil\FicQugen.cs" />
     <Compile Include="DbUtil\FiQueryTools.cs" />
@@ -120,7 +119,7 @@
     <Compile Include="DbInterface\IRepo.cs" />
     <Compile Include="DbUtil\DbAttributes.cs" />
     <Compile Include="DbUtil\EmTblCreateTypes.cs" />
-    <Compile Include="DbUtil\FiDbhms.cs" />
+    <Compile Include="DbUtil\FiMssqlu.cs" />
     <Compile Include="DbUtil\FiDbMetaSqlServer.cs" />
     <Compile Include="DbUtil\FiMetaField.cs" />
     <Compile Include="DbUtil\FiSqlPrmBind.cs" />
@@ -133,7 +132,7 @@
     <Compile Include="DbUtil\FiQuery.cs" />
     <Compile Include="DbUtil\FiLINQtoDataTable.cs" />
     <Compile Include="DbUtil\FiListExtensions.cs" />
-    <Compile Include="DbUtil\FiMssqlQuery.cs" />
+    <Compile Include="DbUtil\FiMsQuery.cs" />
     <Compile Include="DemoEntity\DemoMkfields.cs" />
     <Compile Include="DemoEntity\MysqlQueryDemo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

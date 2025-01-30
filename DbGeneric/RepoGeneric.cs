@@ -6,9 +6,9 @@ namespace OrakYazilimLib.DbGeneric
     {
         public string connProfile { get; set; }
 
-        public FiDbhms GetDbHelper()
+        public FiMssqlu GetDbHelper()
         {
-            return FiDbhms.FactoryWitProfile(connProfile);
+            return FiMssqlu.BuiWitProfile(connProfile);
         }
 
         public void CheckAndSetConnProfile()

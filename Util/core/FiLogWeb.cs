@@ -47,11 +47,11 @@ namespace OrakYazilimLib.Util
 			return null;
 		}
 
-		public static string GetDetailSqlLog(FiMssqlQuery fiMssqlQuery)
+		public static string GetDetailSqlLog(FiMsQuery fiMsQuery)
 		{
 			if (boDebugDetailEnabled)
 			{
-				string log = "Query:" + fiMssqlQuery.sql + "\n Params \n" + fiMssqlQuery.GetSqlBindings();
+				string log = "Query:" + fiMsQuery.sql + "\n Params \n" + fiMsQuery.GetSqlBindings();
 				return log;
 			}
 

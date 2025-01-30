@@ -14,7 +14,7 @@ namespace OrakYazilimLib.DbUtil
 	/**
 	 * FiDbHelper-Mssql
 	 */
-	public class FiDbhms
+	public class FiMssqlu
 	{
 		public string connString { get; set; }
 		//private static readonly string connectionString = ConfigurationManager.ConnectionStrings["ConnStr"].ConnString;
@@ -23,34 +23,29 @@ namespace OrakYazilimLib.DbUtil
 
 		public IFiDbConnFactory iFiDbConnFactory{ get; set; }
 
-		public FiDbhms()
+		public FiMssqlu()
 		{
 
 		}
 
-		public FiDbhms(string connStr)
+		public FiMssqlu(string connStr)
 		{
 			connString = connStr;
 		}
 
-		public static FiDbhms FactoryWitProfile(string connProfile)
+		public static FiMssqlu BuiWitProfile(string connProfile)
 		{
-			return new FiDbhms(FiAppConfig.GetConnectionString(connProfile));
+			return new FiMssqlu(FiAppConfig.GetConnectionString(connProfile));
 		}
-
-		//public static FiDbhms Factory(FiConnConfig configKey)
-		//{
-		//    return new FiDbhms(FiAppConfig.GetConnectionString(configKey));
-		//}
 
 		/// <summary>
 		/// connString direk olarak alır
 		/// </summary>
 		/// <param name="connString"></param>
 		/// <returns></returns>
-		public static FiDbhms FactoryWitCs(string connString)
+		public static FiMssqlu BuiWitCs(string connString)
 		{
-			return new FiDbhms(connString);
+			return new FiMssqlu(connString);
 		}
 
 		public Fdr<int> SqlExecuteNonQuery(string sql, List<FiSqlParameter> sqlParamList)
@@ -208,11 +203,11 @@ namespace OrakYazilimLib.DbUtil
 			return fiResponse;
 		}
 
-		public Fdr<T> SqlExecuteScalar<T>(FiMssqlQuery fiMssqlQuery)
+		public Fdr<T> SqlExecuteScalar<T>(FiMsQuery fiMsQuery)
 		{
 
 			SqlConnection connection = new SqlConnection(connString);
-			var prms = FiSqlParameter.convertSqlParameter(fiMssqlQuery.listParams).ToArray();
+			var prms = FiSqlParameter.convertSqlParameter(fiMsQuery.listParams).ToArray();
 
 			object result = null;
 			var fiResponse = new Fdr<T>();
@@ -221,7 +216,7 @@ namespace OrakYazilimLib.DbUtil
 			{
 				try
 				{
-					SqlCommand command = new SqlCommand(fiMssqlQuery.sql, connection);
+					SqlCommand command = new SqlCommand(fiMsQuery.sql, connection);
 					connection.Open();
 
 					if (prms != null && prms.Length > 0)
@@ -285,18 +280,18 @@ namespace OrakYazilimLib.DbUtil
 		//    return SqlExecuteDataTable(fiSqlQuery.sql, fiSqlQuery.GetListParams());
 		//}
 
-		public Fdr<DataTable> SqlExecuteDataTable(FiMssqlQuery fiMssqlQuery)
+		public Fdr<DataTable> SqlExecuteDataTable(FiMsQuery fiMsQuery)
 		{
 
 			DataSet ds = new DataSet();
 			SqlConnection connection = new SqlConnection(connString);
-			var prms = FiSqlParameter.convertSqlParameter(fiMssqlQuery.getListParams()).ToArray();
+			var prms = FiSqlParameter.convertSqlParameter(fiMsQuery.getListParams()).ToArray();
 
 			var fiReturn = new Fdr<DataTable>();
 
 			using (connection)
 			{
-				SqlCommand command = new SqlCommand(fiMssqlQuery.sql, connection);
+				SqlCommand command = new SqlCommand(fiMsQuery.sql, connection);
 
 				if (FiCollection.isFull(prms))
 				{
@@ -320,7 +315,7 @@ namespace OrakYazilimLib.DbUtil
 						fiReturn.blResult = false;
 						fiReturn.txErrorMsgShort = FiLogWeb.GetMessage(ex);
 						fiReturn.obReturn = new DataTable();
-						fiReturn.txErrorMsgDetail = FiLogWeb.GetDetailSqlLog(fiMssqlQuery);
+						fiReturn.txErrorMsgDetail = FiLogWeb.GetDetailSqlLog(fiMsQuery);
 					}
 				}
 
@@ -1021,9 +1016,9 @@ namespace OrakYazilimLib.DbUtil
 
 		}
 
-		public static FiDbhms build(string connStr)
+		public static FiMssqlu build(string connStr)
 		{
-			return new FiDbhms(connStr);
+			return new FiMssqlu(connStr);
 		}
 	}
 }

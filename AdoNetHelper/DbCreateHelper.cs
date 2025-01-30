@@ -10,7 +10,7 @@ namespace OrakYazilimLib.AdoNetHelper
         {
             var database = new FiMssql(connStr);
 
-            int rowsaffected = database.RunQuery(new FiMssqlQuery().createQuery(typeTable, (int)EmTblCreateTypes.Refresh));
+            int rowsaffected = database.RunQuery(new FiMsQuery().createQuery(typeTable, (int)EmTblCreateTypes.Refresh));
 
             return rowsaffected;
         }
