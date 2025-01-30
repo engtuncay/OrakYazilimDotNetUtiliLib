@@ -8,7 +8,15 @@ namespace OrakYazilimLib.DataContainer
     public class Fdr<T>
     {
 
-        public bool? boResult { get; set; }
+        public bool? boResult
+        {
+            get => this.boResult;
+            set
+            {
+                this.boResult = true;
+                this.blResult = true;
+            }
+        }
         /// <summary>
         /// deprecated - boResult kullan
         /// </summary>

@@ -17,11 +17,12 @@ namespace OrakYazilimLib.DbUtil
 	public class FiMssqlu
 	{
 		public string connString { get; set; }
-		//private static readonly string connectionString = ConfigurationManager.ConnectionStrings["ConnStr"].ConnString;
 
-		public int errorRetValue = -1;
+		//public int errorRetValue = -1;
 
 		public IFiDbConnFactory iFiDbConnFactory{ get; set; }
+
+		public SqlConnection sqlConnection { get; set; }
 
 		public FiMssqlu()
 		{
@@ -31,6 +32,7 @@ namespace OrakYazilimLib.DbUtil
 		public FiMssqlu(string connStr)
 		{
 			connString = connStr;
+			this.sqlConnection = new SqlConnection(connString);
 		}
 
 		public static FiMssqlu BuiWitProfile(string connProfile)
@@ -46,11 +48,6 @@ namespace OrakYazilimLib.DbUtil
 		public static FiMssqlu BuiWitCs(string connString)
 		{
 			return new FiMssqlu(connString);
-		}
-
-		public Fdr<int> SqlExecuteNonQuery(string sql, List<FiSqlParameter> sqlParamList)
-		{
-			return SqlExecuteNonQuery(sql, FiSqlParameter.convertSqlParameter(sqlParamList).ToArray());
 		}
 
 		public Fdr<int> SqlExecuteNonQuery(string sql, SqlParameter[] prms)
@@ -359,14 +356,12 @@ namespace OrakYazilimLib.DbUtil
 					try
 					{
 						da.Fill(ds);
-						fdr.blResult = true;
 						fdr.boResult = true;
 						fdr.obReturn = ds.Tables[0];
 					}
 					catch (Exception ex)
 					{
 						Debug.Write(ex.ToString());
-						fdr.blResult = false;
 						fdr.boResult = false;
 						fdr.txErrorMsgShort = ex.Message;
 						fdr.obReturn = new DataTable();
@@ -1020,5 +1015,10 @@ namespace OrakYazilimLib.DbUtil
 		{
 			return new FiMssqlu(connStr);
 		}
+
+		public Fdr<int> SqlExecuteNonQuery(string sql, List<FiSqlParameter> sqlParamList)
+		{
+			return SqlExecuteNonQuery(sql, FiSqlParameter.convertSqlParameter(sqlParamList).ToArray());
+		}
 	}
-}
+}// end namesapce

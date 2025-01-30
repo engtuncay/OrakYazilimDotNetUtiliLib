@@ -5,7 +5,7 @@ using OrakYazilimLib.Util;
 namespace OrakYazilimLib.DbGeneric
 {
     /**
-     * Fi Sql String Formatter
+     * FiSql String Formatter
      * 
      * Use FiQueryTools
      */
