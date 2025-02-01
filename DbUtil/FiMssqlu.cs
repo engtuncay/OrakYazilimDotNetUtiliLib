@@ -31,6 +31,7 @@ namespace OrakYazilimLib.DbUtil
 
 		public FiMssqlu(string connStr)
 		{
+			Console.WriteLine("FiMssqlu Constructor");
 			connString = connStr;
 			this.sqlConnection = new SqlConnection(connString);
 		}
@@ -334,11 +335,22 @@ namespace OrakYazilimLib.DbUtil
 
 		public Fdr<DataTable> SqlExecuteDataTable(string sql, List<FiSqlParameter> listParam)
 		{
+			var fdrMain = new Fdr<DataTable>();
+
+			//Console.WriteLine("SqlExecuteDataTable");
+			FiAppConfig.logManager?.LogMessage("SqlExecuteDataTable called");
+
+
+			if (this.connString == null)
+			{
+				fdrMain.txMessage = "ConnString Tanımlı Değil";
+				return fdrMain; //.buiMess("ConnString Tanımlı Değil");
+			}
+
 			DataSet ds = new DataSet();
 			SqlConnection connection = new SqlConnection(connString);
-			var prms = FiSqlParameter.convertSqlParameter(listParam).ToArray();
 
-			var fdr = new Fdr<DataTable>();
+			var prms = FiSqlParameter.convertSqlParameter(listParam).ToArray();
 
 			using (connection)
 			{
@@ -356,15 +368,16 @@ namespace OrakYazilimLib.DbUtil
 					try
 					{
 						da.Fill(ds);
-						fdr.boResult = true;
-						fdr.obReturn = ds.Tables[0];
+						fdrMain.boResult = true;
+						fdrMain.obReturn = ds.Tables[0];
 					}
 					catch (Exception ex)
 					{
 						Debug.Write(ex.ToString());
-						fdr.boResult = false;
-						fdr.txErrorMsgShort = ex.Message;
-						fdr.obReturn = new DataTable();
+						FiAppConfig.logManager.LogMessage(ex.ToString());
+						fdrMain.boResult = false;
+						fdrMain.txErrorMsgShort = ex.Message;
+						fdrMain.obReturn = new DataTable();
 					}
 				}
 
@@ -381,7 +394,7 @@ namespace OrakYazilimLib.DbUtil
 			}
 
 
-			return fdr;
+			return fdrMain;
 		}
 
 		public Fdr<DataTable> SqlExecute(FiQuery fiQuery)

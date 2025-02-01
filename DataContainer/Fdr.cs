@@ -2,19 +2,22 @@
 using System.Dynamic;
 using System.Web.UI.WebControls;
 using OrakYazilimLib.Util;
+using System.Data;
 
 namespace OrakYazilimLib.DataContainer
 {
     public class Fdr<T>
     {
+        private bool? _boResult;
 
         public bool? boResult
         {
-            get => this.boResult;
+            get => _boResult;
+
             set
             {
-                this.boResult = true;
-                this.blResult = true;
+                _boResult = true;
+                blResult = true;
             }
         }
         /// <summary>
@@ -22,6 +25,7 @@ namespace OrakYazilimLib.DataContainer
         /// </summary>
         public bool? blResult { get; set; }
         public T obReturn { get; set; }
+        public T refValue { get; set; }
         public string txErrorMsgShort { get; set; }
         public string txErrorMsgDetail { get; set; }
         public int lnRowsAffected { get; set; }
@@ -111,6 +115,12 @@ namespace OrakYazilimLib.DataContainer
         {
             if (this.blResult == null) return false;
             return blResult.Value;
+        }
+
+        public Fdr<T> buiMess(string txMessage)
+        {
+            this.txMessage = txMessage;
+            return this;
         }
     }
 

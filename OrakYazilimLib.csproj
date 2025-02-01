@@ -97,6 +97,7 @@
     <Compile Include="AdoNetHelper\SuperHelper.cs" />
     <Compile Include="CouchDb\CouchDbClient.cs" />
     <Compile Include="CouchDb\Credentials.cs" />
+    <Compile Include="DataContainer\DtFdr1.cs" />
     <Compile Include="DataContainer\Torg.cs" />
     <Compile Include="DataContainer\Tor.cs" />
     <Compile Include="DataContainer\FiReturn2.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Util\ColStruct\FiColList.cs" />
     <Compile Include="Util\ColStruct\IFiTableMeta.cs" />
     <Compile Include="Util\config\IConfigManager.cs" />
+    <Compile Include="Util\config\ILogManager.cs" />
     <Compile Include="Util\core\FiBoolean.cs" />
     <Compile Include="Util\core\FiCalender.cs" />
     <Compile Include="Util\config\FiAppConfig.cs" />

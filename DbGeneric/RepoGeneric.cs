@@ -1,4 +1,5 @@
 using OrakYazilimLib.DbUtil;
+using System;
 
 namespace OrakYazilimLib.DbGeneric
 {
@@ -17,6 +18,7 @@ namespace OrakYazilimLib.DbGeneric
 
         public FiMssqlu GetDbHelper()
         {
+            Console.WriteLine($"dbhelper: {connProfile}");
             return FiMssqlu.BuiWitProfile(connProfile);
         }
 
