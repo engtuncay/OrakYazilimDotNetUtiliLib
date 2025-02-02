@@ -338,7 +338,7 @@ namespace OrakYazilimLib.DbUtil
 			var fdrMain = new Fdr<DataTable>();
 
 			//Console.WriteLine("SqlExecuteDataTable");
-			FiAppConfig.logManager?.LogMessage("SqlExecuteDataTable called");
+			FiAppConfig.fiLogManager?.LogMessage("SqlExecuteDataTable called");
 
 
 			if (this.connString == null)
@@ -374,7 +374,7 @@ namespace OrakYazilimLib.DbUtil
 					catch (Exception ex)
 					{
 						Debug.Write(ex.ToString());
-						FiAppConfig.logManager.LogMessage(ex.ToString());
+						FiAppConfig.fiLogManager.LogMessage(ex.ToString());
 						fdrMain.boResult = false;
 						fdrMain.txErrorMsgShort = ex.Message;
 						fdrMain.obReturn = new DataTable();

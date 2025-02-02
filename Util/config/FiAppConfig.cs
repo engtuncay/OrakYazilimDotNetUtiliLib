@@ -9,8 +9,8 @@ namespace OrakYazilimLib.Util.config
     {
         public static bool boTestMode = false;
         public static bool boUseConfigManager = false; // { get; set; }  //= false;
-        public static IConfigManager configManager;
-        public static ILogManager logManager;
+        public static IFiConfigManager fiConfigManager;
+        public static IFiLogManager fiLogManager;
 
         public static void ConvertTestModeTrue()
         {
@@ -24,7 +24,7 @@ namespace OrakYazilimLib.Util.config
 
             if (boUseConfigManager)
             {
-                return configManager?.GetConnString(txProfile); // GetFksConfigsInit()[key];
+                return fiConfigManager?.GetConnString(txProfile); // GetFksConfigsInit()[key];
             }
 
             string connString = ConfigurationManager.ConnectionStrings[txProfile].ConnectionString;
@@ -37,7 +37,7 @@ namespace OrakYazilimLib.Util.config
 
         public static void LogMessage(string message)
         {
-            logManager?.LogMessage(message);
+            fiLogManager?.LogMessage(message);
         }
 
     }

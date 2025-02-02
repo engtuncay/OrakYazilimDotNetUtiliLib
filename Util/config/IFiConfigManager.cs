@@ -2,7 +2,7 @@
 
 namespace OrakYazilimLib.Util.config
 {
-    public interface IConfigManager
+    public interface IFiConfigManager
     {
         string GetConnString(string profile);
     }
