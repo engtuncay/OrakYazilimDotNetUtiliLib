@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace OrakYazilimLib.Util
 {
 
-	/**
-	 * FiStr
-	 */
-	public class FiString
+    /// <summary>
+    ///
+    /// </summary>
+    public static class FiString
     {
         public static void check()
         {
@@ -32,15 +33,24 @@ namespace OrakYazilimLib.Util
 
         public static string OrElseEmptyString(object p)
         {
-            if (p == null) return "";
-
-            return p.ToString();
+            return p == null ? "" : p.ToString();
         }
 
-        public static bool isEmptyWithTrim(string kisaevrakadi)
+        public static bool IsEmptyWithTrim(string txValue)
         {
-            if (kisaevrakadi == null) return true;
-            return FiString.IsEmpty(kisaevrakadi.ToString().Trim());
+            return txValue == null || IsEmpty(txValue.Trim());
+        }
+
+        public static string ReplaceTemplateParameters(string input, Dictionary<string, object> parameters)
+        {
+            if (string.IsNullOrEmpty(input) || parameters == null || parameters.Count == 0)
+                return input;
+
+            return Regex.Replace(input, @"\{\{(.*?)\}\}", match =>
+            {
+                string key = match.Groups[1].Value.Trim();
+                return parameters.ContainsKey(key) ? parameters[key]?.ToString() : match.Value; // Eğer key varsa değiştir, yoksa olduğu gibi bırak.
+            });
         }
     }
 }

@@ -33,6 +33,8 @@ namespace OrakYazilimLib.DataContainer
         public int? lnTotalLength { get; set; }
         public object spec1 { get; set; }
 
+        public int? lnStatusCode { get; set; }
+
         public string txId {get;set;}
 
         public string txMessage {get;set;}

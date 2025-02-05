@@ -142,7 +142,8 @@
     <Compile Include="UtilThirdParty\ShortGuid.cs" />
     <Compile Include="UtilThirdParty\TextHelper.cs" />
     <Compile Include="UtilXml\FiSoap.cs" />
-    <Compile Include="UtilXml\FiSoap2.cs" />
+    <Compile Include="UtilXml\FiSoapArb.cs" />
+    <Compile Include="UtilXml\FiXmlpArb.cs" />
     <Compile Include="Util\Collection\ListFkb.cs" />
     <Compile Include="Util\ColStruct\FiColList.cs" />
     <Compile Include="Util\ColStruct\IFiTableMeta.cs" />
