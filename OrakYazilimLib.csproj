@@ -165,6 +165,7 @@
     <Compile Include="Util\core\FiReflection.cs" />
     <Compile Include="Util\core\FiRegExp.cs" />
     <Compile Include="Util\core\FiSql.cs" />
+    <Compile Include="Util\core\FiTemplate.cs" />
     <Compile Include="Util\core\FiType.cs" />
     <Compile Include="Util\core\ObservableProps.cs" />
     <Compile Include="Util\helper\Fistf.cs" />
