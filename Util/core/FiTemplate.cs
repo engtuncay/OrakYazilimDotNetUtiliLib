@@ -7,8 +7,6 @@ namespace OrakYazilimLib.Util.core
     {
         public string txValue { get; set; }
 
-
-
         public static string ReplaceTemplateParameters(string input, Dictionary<string, object> parameters)
         {
             if (string.IsNullOrEmpty(input) || parameters == null || parameters.Count == 0)
