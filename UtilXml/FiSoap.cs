@@ -32,6 +32,7 @@ namespace OrakYazilimLib.UtilXml
                 {
                     soapResult = rd.ReadToEnd();
                 }
+
                 Console.Write(soapResult);
             }
         }
