@@ -31,7 +31,7 @@ namespace OrakYazilimLib.Util
             return false;
         }
 
-        public static string OrElseEmptyString(object p)
+        public static string OrEmptyElseTos(object p)
         {
             return p == null ? "" : p.ToString();
         }

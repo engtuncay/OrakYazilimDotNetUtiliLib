@@ -67,7 +67,7 @@ namespace OrakYazilimLib.DbUtil
 
             foreach (var fiSqlParameter in getListParams())
             {
-                sqlBindings += " , " + fiSqlParameter.field + "=" + FiString.OrElseEmptyString(fiSqlParameter.value);
+                sqlBindings += " , " + fiSqlParameter.field + "=" + FiString.OrEmptyElseTos(fiSqlParameter.value);
             }
 
             return sqlBindings;
