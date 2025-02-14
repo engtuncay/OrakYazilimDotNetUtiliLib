@@ -36,6 +36,12 @@ namespace OrakYazilimLib.Util
             return p == null ? "" : p.ToString();
         }
 
+        public static string OrEmpty(string p)
+        {
+            return p ?? "";
+        }
+
+
         public static bool IsEmptyWithTrim(string txValue)
         {
             return txValue == null || IsEmpty(txValue.Trim());
