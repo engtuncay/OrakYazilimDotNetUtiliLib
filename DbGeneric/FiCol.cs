@@ -7,7 +7,11 @@ namespace OrakYazilimLib.DbGeneric
     {
         public string ofcTxFieldName { get; set; }
         public string ofcTxHeader { get; set; }
-        public FiColType ofcFiColType { get; set; }
+
+        /**
+         * Alanın Veri Türü (FiColType dan alınabilir)
+         */
+        public string ofcTxColType { get; set; }
 
         /**
          * Alanın varsayılan veri türü
