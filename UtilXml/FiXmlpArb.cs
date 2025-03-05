@@ -15,7 +15,7 @@ namespace OrakYazilimLib.UtilXml
         public static FiXmlpArb BuiParseXml(string txXml)
         {
             // create document instance using XML file path
-            //XDocument doc = XDocument.Load(filePath);
+            // XDocument doc = XDocument.Load(filePath);
             XDocument doc = XDocument.Parse(txXml);
 
             FiXmlpArb fiArb = new FiXmlpArb
@@ -43,9 +43,9 @@ namespace OrakYazilimLib.UtilXml
         }
 
         public string GetTxFirstElement(string elementName){
-            XElement firstBook = xdoc.Descendants(elementName).FirstOrDefault();
+            XElement firstElem = xdoc.Descendants(elementName).FirstOrDefault();
 
-            return firstBook?.Value; //.Descendants(childElementName).FirstOrDefault();
+            return firstElem?.Value; //.Descendants(childElementName).FirstOrDefault();
             // if (firstBook != null)
             // {
             //     string title = firstBook.Element(childElementName)?.Value;
