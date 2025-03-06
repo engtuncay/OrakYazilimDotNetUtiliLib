@@ -98,7 +98,7 @@
     <Compile Include="AdoNetHelper\SuperHelper.cs" />
     <Compile Include="CouchDb\CouchDbClient.cs" />
     <Compile Include="CouchDb\Credentials.cs" />
-    <Compile Include="DataContainer\DtFdr1.cs" />
+    <Compile Include="DataContainer\DtoFdr1.cs" />
     <Compile Include="DataContainer\Torg.cs" />
     <Compile Include="DataContainer\Tor.cs" />
     <Compile Include="DataContainer\FiReturn2.cs" />

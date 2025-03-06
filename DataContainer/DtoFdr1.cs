@@ -3,22 +3,22 @@ using System.Data;
 
 namespace OrakYazilimLib.DataContainer
 {
-    public class DtFdr1
+    public class DtoFdr1
     {
         public bool? boResult { get; set; }
         public Object refValue { get; set; }
 
-        public static DtFdr1 ImportFdr(Fdr<DataTable> fdr)
+        public static DtoFdr1 ImportFdr(Fdr<DataTable> fdr)
         {
-            DtFdr1 dtFdr1 = new DtFdr1
+            DtoFdr1 dtoFdr1 = new DtoFdr1
             {
                 boResult = fdr.boResult,
                 refValue = fdr.refValue
             };
 
-            if(fdr.obReturn!=null) dtFdr1.refValue = fdr.obReturn;
+            if(fdr.obReturn!=null) dtoFdr1.refValue = fdr.obReturn;
 
-            return dtFdr1;
+            return dtoFdr1;
         }
     }
 }
