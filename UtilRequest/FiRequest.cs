@@ -7,9 +7,9 @@ namespace OrakYazilimLib.UtilRequest
     /// </summary>
     public class FiRequest
     {
-        public string firTxProfile { get; set; }
-        public string firTxUser { get; set; }
-        public string firTxPass { get; set; }
-        public FiKeybean firFkbParams { get; set; }
+        public string frTxProfile { get; set; }
+        public string frTxUser { get; set; }
+        public string frTxPass { get; set; }
+        public FiKeybean frFkbParams { get; set; }
     }
 }

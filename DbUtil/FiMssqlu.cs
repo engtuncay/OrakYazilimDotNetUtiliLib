@@ -31,7 +31,7 @@ namespace OrakYazilimLib.DbUtil
 
 		public FiMssqlu(string connStr)
 		{
-			Console.WriteLine("FiMssqlu Constructor");
+			//Console.WriteLine("FiMssqlu Constructor");
 			connString = connStr;
 			this.sqlConnection = new SqlConnection(connString);
 		}

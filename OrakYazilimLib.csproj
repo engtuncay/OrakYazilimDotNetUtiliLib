@@ -108,14 +108,14 @@
     <Compile Include="DbGeneric\FiColType.cs" />
     <Compile Include="DbGeneric\RepoCommonGen.cs" />
     <Compile Include="DbGeneric\RepoCommon.cs" />
-    <Compile Include="DbGeneric\RepoGeneric2.cs" />
+    <Compile Include="DbGeneric\RepoGenericAlt.cs" />
     <Compile Include="DbUtil\IFiDbConnFactory.cs" />
     <Compile Include="DbUtil\FiMetaEntity.cs" />
     <Compile Include="DbUtil\FicQugen.cs" />
     <Compile Include="DbUtil\FiQueryTools.cs" />
     <Compile Include="DbUtil\Fsf.cs" />
     <Compile Include="DbGeneric\FiSqlParameter.cs" />
-    <Compile Include="DbGeneric\RepoGeneric.cs" />
+    <Compile Include="DbGeneric\AbsRepoGeneric.cs" />
     <Compile Include="DbInterface\IEntity.cs" />
     <Compile Include="DbInterface\IRepo.cs" />
     <Compile Include="DbUtil\DbAttributes.cs" />
