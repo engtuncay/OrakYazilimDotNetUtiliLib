@@ -27,7 +27,16 @@ namespace OrakYazilimLib.UtilXml
                 using (HttpWebResponse response = (HttpWebResponse) request.GetResponse())
                 {
 
-                    using (StreamReader rd = new StreamReader(response.GetResponseStream()))
+                    Stream responseStream = response.GetResponseStream();
+                    if (responseStream == null)
+                    {
+                        //throw new InvalidOperationException("Response stream is null.");
+                        fdrMain.boResult = false;
+                        fdrMain.txMessage = "Response stream is null.";
+                        return fdrMain;
+                    }
+
+                    using (StreamReader rd = new StreamReader(responseStream))
                     {
                         string soapResult = rd.ReadToEnd();
                         fdrMain.txMessage = soapResult;
