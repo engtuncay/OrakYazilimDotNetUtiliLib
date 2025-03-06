@@ -25,7 +25,7 @@ namespace OrakYazilimLib.DbUtil
     public FiQuery(string sql, FiKeybean fkbParams)
     {
       this.sql = sql;
-      this.fkbParams = new FiKeybean(fkbParams);
+      this.fkbParams = fkbParams; // new FiKeybean(fkbParams); // orjinali bozmamak istenirse kopya oluşturlabilir
     }
 
     public static void addMultiParam(List<object> list, string prmName, List<SqlParameter> listSqlParam)
