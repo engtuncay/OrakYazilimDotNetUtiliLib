@@ -22,6 +22,12 @@ namespace OrakYazilimLib.DbGeneric
       return FiMssqlu.BuiWitProfile(connProfile);
     }
 
+    public FiMssqlu GetDbHelperc()
+    {
+      //Console.WriteLine($"dbhelper: {connProfile}");
+      return FiMssqlu.BuiWitProfile(connProfile);
+    }
+
     public void CheckAndSetConnProfile()
     {
       // TODO metod yaz

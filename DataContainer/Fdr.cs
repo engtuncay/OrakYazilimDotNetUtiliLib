@@ -12,14 +12,18 @@ namespace OrakYazilimLib.DataContainer
 
         public bool? boResult
         {
-            get => _boResult;
+            get
+            {
+                return _boResult;
+            }
 
             set
             {
-                _boResult = true;
-                blResult = true;
+                _boResult = value;
+                blResult = value;
             }
         }
+
         /// <summary>
         /// deprecated - boResult kullan
         /// </summary>

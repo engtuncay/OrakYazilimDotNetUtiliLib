@@ -12,7 +12,7 @@ using OrakYazilimLib.Util.core;
 namespace OrakYazilimLib.DbUtil
 {
 	/**
-	 * FiDbHelper-Mssql
+	 * FiDbHelper-Mssql - Utility Library
 	 */
 	public class FiMssqlu
 	{
@@ -22,7 +22,7 @@ namespace OrakYazilimLib.DbUtil
 
 		public IFiDbConnFactory iFiDbConnFactory{ get; set; }
 
-		public SqlConnection sqlConnection { get; set; }
+		//public SqlConnection sqlConnection { get; set; }
 
 		public FiMssqlu()
 		{
@@ -33,7 +33,7 @@ namespace OrakYazilimLib.DbUtil
 		{
 			//Console.WriteLine("FiMssqlu Constructor");
 			connString = connStr;
-			this.sqlConnection = new SqlConnection(connString);
+			//this.sqlConnection = new SqlConnection(connString);
 		}
 
 		public static FiMssqlu BuiWitProfile(string connProfile)
@@ -373,8 +373,8 @@ namespace OrakYazilimLib.DbUtil
 					}
 					catch (Exception ex)
 					{
-						Debug.Write(ex.ToString());
-						FiAppConfig.fiLogManager.LogMessage(ex.ToString());
+						//Debug.Write(ex.ToString());
+						FiAppConfig.fiLogManager?.LogMessage(ex.ToString());
 						fdrMain.boResult = false;
 						fdrMain.txErrorMsgShort = ex.Message;
 						fdrMain.obReturn = new DataTable();
@@ -397,19 +397,18 @@ namespace OrakYazilimLib.DbUtil
 			return fdrMain;
 		}
 
-		public Fdr<DataTable> SqlExecute(FiQuery fiQuery)
+		public Fdr<DataTable> SqlExecuteSelect(FiQuery fiQuery)
 		{
-
 			DataSet ds = new DataSet();
-			SqlConnection connection = new SqlConnection(connString);
-			var queryParams = fiQuery.genListSqlParameter().ToArray();
+			SqlConnection sqConn = new SqlConnection(connString);
+			var queryParams = fiQuery.GetParamsAsSqlParamList().ToArray();
 
-			var fiReturn = new Fdr<DataTable>();
+			var fdrMain = new Fdr<DataTable>();
 
-			using (connection)
+			using (sqConn)
 			{
 				String query = FiQueryTools.fixSqlProblems(fiQuery.sql);
-				SqlCommand command = new SqlCommand(query, connection);
+				SqlCommand command = new SqlCommand(query, sqConn);
 
 				if (FiCollection.isFull(queryParams))
 				{
@@ -418,21 +417,21 @@ namespace OrakYazilimLib.DbUtil
 
 				using (SqlDataAdapter da = new SqlDataAdapter(command))
 				{
-
 					// Fill the DataSet using default values for DataTable names, etc
 					try
 					{
 						da.Fill(ds);
-						fiReturn.blResult = true;
-						fiReturn.obReturn = ds.Tables[0];
+						fdrMain.blResult = true;
+						fdrMain.boResult = true;
+						fdrMain.obReturn = ds.Tables[0];
 					}
 					catch (Exception ex)
 					{
 						FiLogWeb.logWeb("hata at sql execute");
 						Debug.Write(ex.ToString());
-						fiReturn.blResult = false;
-						fiReturn.txErrorMsgShort = ex.Message;
-						fiReturn.obReturn = new DataTable();
+						fdrMain.blResult = false;
+						fdrMain.txErrorMsgShort = ex.Message;
+						fdrMain.obReturn = new DataTable();
 					}
 				}
 
@@ -449,7 +448,7 @@ namespace OrakYazilimLib.DbUtil
 			}
 
 
-			return fiReturn;
+			return fdrMain;
 		}
 
 		//Draft
