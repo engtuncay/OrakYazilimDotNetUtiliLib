@@ -421,15 +421,16 @@ namespace OrakYazilimLib.DbUtil
 					try
 					{
 						da.Fill(ds);
-						fdrMain.blResult = true;
 						fdrMain.boResult = true;
 						fdrMain.obReturn = ds.Tables[0];
 					}
 					catch (Exception ex)
 					{
-						FiLogWeb.logWeb("hata at sql execute");
-						Debug.Write(ex.ToString());
-						fdrMain.blResult = false;
+						//FiLogWeb.logWeb("hata at sql execute");
+						//Debug.Write(ex.ToString());
+						FiAppConfig.fiLogManager?.LogMessage(ex.ToString());
+						//fdrMain.blResult = false;
+						fdrMain.boResult = false;
 						fdrMain.txErrorMsgShort = ex.Message;
 						fdrMain.obReturn = new DataTable();
 					}
