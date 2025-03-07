@@ -19,9 +19,9 @@ namespace OrakYazilimLib.DbGeneric
          */
         public FiColType fiColType { get; set; }
 
-        public FiCol(string fieldName)
+        public FiCol(string ofcTxFieldName)
         {
-            this.ofcTxFieldName = fieldName;
+            this.ofcTxFieldName = ofcTxFieldName;
         }
 
         public FiCol(string ofcTxFieldName, string ofcTxHeader)

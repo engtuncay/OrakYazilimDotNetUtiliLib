@@ -37,7 +37,6 @@ namespace OrakYazilimLib.DbGeneric
 
   public abstract class AbsRepoGeneric : AbsRepoGeneric<Object>
   {
-
     protected AbsRepoGeneric(string connProfile) : base(connProfile)
     {
     }

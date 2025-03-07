@@ -10,6 +10,7 @@ namespace OrakYazilimLib.UtilRequest
         public string frTxProfile { get; set; }
         public string frTxUser { get; set; }
         public string frTxPass { get; set; }
+        public string frTxToken { get; set; }
         public FiKeybean frFkbParams { get; set; }
     }
 }

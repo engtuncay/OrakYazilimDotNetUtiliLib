@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace OrakYazilimLib.AdoNetHelper
 {
-	public class FiMssql
+	public class FiMssqlSoc
 	{
 		public string connString { get; private set; }
 		public SqlConnection conn { get; private set; }
@@ -17,7 +17,7 @@ namespace OrakYazilimLib.AdoNetHelper
 		/// </summary>
 		public SqlCommand comm { get; private set; }
 
-		public FiMssql(string connString)
+		public FiMssqlSoc(string connString)
 		{
 			this.connString = connString;
 			conn = new SqlConnection(connString);
